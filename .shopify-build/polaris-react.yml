@@ -8,23 +8,21 @@ shared:
   build-web: &build-web
     label: 'Build web'
     container: default
-    timeout: 20m
-    dependencies:
-      - yarn
-    run:
-      - yarn run build
-      - ./move-directory-in-ci.sh
-      - ./polaris-react/build-consumer.sh web
-  build-styleguide: &build-styleguide
-    label: 'Build styleguide'
-    container: styleguide
     timeout: 25m
     dependencies:
       - yarn
     run:
       - yarn run build
-      - ./move-directory-in-ci.sh
-      - ./polaris-react/build-consumer.sh polaris-styleguide
+      - ./scripts/build-consumer.sh web
+  build-styleguide: &build-styleguide
+    label: 'Build styleguide'
+    container: styleguide
+    timeout: 20m
+    dependencies:
+      - yarn
+    run:
+      - yarn run build
+      - ./scripts/build-consumer.sh polaris-styleguide
 
 steps:
   - <<: *build-styleguide
