@@ -13,7 +13,8 @@ shared:
       - yarn
     run:
       - yarn run build
-      - ./scripts/build-consumer.sh web
+      - ./.shopify-build/setup-consumer-test.sh web
+      - yarn --cwd ./web run build
   build-styleguide: &build-styleguide
     label: 'Build styleguide'
     container: styleguide
@@ -22,8 +23,23 @@ shared:
       - yarn
     run:
       - yarn run build
-      - ./scripts/build-consumer.sh polaris-styleguide
+      - ./.shopify-build/setup-consumer-test.sh polaris-styleguide
+      - yarn --cwd ./polaris-styleguide run build
+  unit-tests: &unit-tests
+    label: '🤓 Unit tests'
+    container: default
+    timeout: 15m
+    dependencies:
+      - yarn
+    run:
+      - yarn run build
+      - ./.shopify-build/setup-consumer-test.sh web
+      - cd ./web
+      - node ./.shopify-build/balancer.js
+      - CI=true yarn run sewing-kit test --maxWorkers 2 --coverage $(./.shopify-build/balancer.js)
+    parallelism: 8
 
 steps:
   - <<: *build-styleguide
   - <<: *build-web
+  - <<: *unit-tests
