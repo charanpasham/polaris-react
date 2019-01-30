@@ -354,7 +354,7 @@ When using Polaris, you don’t need to go through the initialization of the Sho
 
 **The `apiKey` attribute is required**. You can find the API key for your app in the Apps section of your [Shopify Partner Dashboard](https://partners.shopify.com).
 
-**The `shopOrigin` attribute is optional**, however it is best practice to [get and store `shopOrigin` yourself](https://help.shopify.com/en/api/embedded-apps/shop-origin).
+**The `shopOrigin` attribute is optional, but recommended**.  Learn how to get and store the shop origin in the [Shopify Help Center](https://help.shopify.com/en/api/embedded-apps/shop-origin).
 
 ```jsx
 ReactDOM.render(
