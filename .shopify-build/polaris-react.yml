@@ -8,7 +8,7 @@ shared:
   build-web: &build-web
     label: 'Build web'
     container: default
-    timeout: 25m
+    timeout: 28m
     dependencies:
       - yarn
     run:
