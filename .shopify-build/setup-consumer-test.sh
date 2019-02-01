@@ -9,4 +9,5 @@ mv !(node_modules) ../tmp/polaris-react
 mv ../tmp/polaris-react polaris-react
 git clone ssh://git@github.com/Shopify/$1 --depth 1
 ls -l
+ls -l ./$1/node_modules/@shopify/polaris
 yarn --cwd ./$1 add ../polaris-react
