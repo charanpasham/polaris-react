@@ -14,6 +14,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Bug fixes
 
+- Add margin top to `Card`'s footer to separate `Button Group` ([#962](https://github.com/Shopify/polaris-react/pull/962))
+
 ### Documentation
 
 ### Development workflow

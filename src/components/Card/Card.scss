@@ -61,9 +61,10 @@
 .Footer {
   display: flex;
   justify-content: flex-end;
-  padding: 0 spacing() spacing();
+  padding: spacing() spacing();
 
   @include page-content-when-not-fully-condensed {
     padding: 0 spacing(loose) spacing(loose);
+    margin-top: spacing(loose);
   }
 }
